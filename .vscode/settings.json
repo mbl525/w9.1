@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "mpie-p91-ghost-ai.sln"
+    "dotnet.defaultSolution": "w9.1.sln"
 }
