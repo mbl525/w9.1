@@ -14,4 +14,12 @@ public class CherryCollision : MonoBehaviour
     {
         
     }
+
+    void OnTriggerStay(Collider other) 
+    {
+        if (other.gameObject.name == "Cherry")
+        {
+            cherryMode = true;
+        }
+    }
 }

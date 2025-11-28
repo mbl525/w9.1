@@ -27,6 +27,7 @@ public class GhostMovement : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
+       bool cherryStatus = player.GetComponent<CherryCollision>().cherryMode;
        NavMeshAgent agent = GetComponent<NavMeshAgent>();
        if (state == GhostState.WANDERING) {
            if (agent.remainingDistance <= 1.0f) {
@@ -35,10 +36,14 @@ public class GhostMovement : MonoBehaviour
                agent.destination = new Vector3(x, 0.0f, z);
            }
        } else if (state == GhostState.PLAYER_SEEN) {
+            agent.destination = player.transform.position;
             if (state == GhostState.PLAYER_SEEN && agent.remainingDistance <= 1.0f) {
                // two == is a conditionnal
                 state = GhostState.PLAYER_CAUGHT;
+            } else if (cherryStatus == true) {
+                state = GhostState.RETURN_HOME;
             }
+       
        } if (state == GhostState.PLAYER_CAUGHT) {
            //Restarts the game
            //Possible extension: Adding UI screen
